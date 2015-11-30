@@ -1,3 +1,13 @@
+joli_blog:
+    resource: "@JoliBlogBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+square:
+    path: /square/{number}
+    defaults:
+        _controller: JoliBlogBundle:Default:square
