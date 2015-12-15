@@ -3,6 +3,7 @@
 namespace Joli\BlogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Post
@@ -16,12 +17,7 @@ class Post
      * @ORM\ManyToOne(targetEntity="Category", inversedBy="posts")
      * @ORM\JoinColumn(name="post_id", referencedColumnName="id")
      */
-    protected $category;
-
-    protected function __construct()
-    {
-        $this->category = new ArrayCollection();
-    }
+    private $category;
 
     /**
      * @var integer
@@ -53,6 +49,13 @@ class Post
      */
     private $isPublished;
 
+    /**
+     * @var string $slug
+     *
+     * @Gedmo\Slug(fields={"title"}, updatable=false, separator="-")
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
 
     /**
      * Get id
@@ -119,7 +122,7 @@ class Post
      *
      * @return Post
      */
-    public function setIsPublished($isPublished)
+    public function setPublished($isPublished)
     {
         $this->isPublished = $isPublished;
 
@@ -131,7 +134,7 @@ class Post
      *
      * @return boolean
      */
-    public function getIsPublished()
+    public function getPublished()
     {
         return $this->isPublished;
     }

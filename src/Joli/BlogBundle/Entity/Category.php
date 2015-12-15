@@ -17,9 +17,9 @@ class Category
      * @ORM\OneToMany(targetEntity="Post", mappedBy="category")
      * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      */
-    protected $posts;
+    private $posts;
 
-    protected function __construct()
+    public function __construct()
     {
         $this->posts = new ArrayCollection();
     }
