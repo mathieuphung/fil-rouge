@@ -11,3 +11,6 @@ square:
     path: /square/{number}
     defaults:
         _controller: JoliBlogBundle:Default:square
+
+post_success:
+    path: /blog/post_success

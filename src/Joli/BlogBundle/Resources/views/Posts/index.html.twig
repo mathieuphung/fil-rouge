@@ -1,0 +1,12 @@
+<h1>Hello !</h1>
+
+<ul>
+    {% for post in posts %}
+    {% if post.isPublished != false %}
+        <li>
+            <h2>{{ post.title|e }}</h2>
+            <p>{{ post.body|e }}</p>
+        </li>
+    {% endif %}
+    {% endfor %}
+</ul>
